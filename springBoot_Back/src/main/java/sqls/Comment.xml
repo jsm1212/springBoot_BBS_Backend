@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="mul.camp.a.dao.CommentDao">
+  
+  <!-- 댓글행 게시판 -->
+ <insert id="insertComment" parameterType="mul.camp.a.dto.CommentDto" >
+ 	INSERT INTO COMMENTS(SEQ, ID, CONTENT, WDATE)
+ 	VALUES(#{seq}, #{id}, #{content}, SYSDATE)
+ </insert>
+  
+  <select id="getCommentList" parameterType="java.lang.Integer" resultType="mul.camp.a.dto.CommentDto">
+  	SELECT *
+  	FROM COMMENTS
+  	WHERE SEQ=#{seq}
+  	ORDER BY WDATE DESC
+  </select>
+  
+  </mapper>
