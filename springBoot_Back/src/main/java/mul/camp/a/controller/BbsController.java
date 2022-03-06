@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,6 +39,7 @@ public class BbsController {
 		
 		return "NO";
 	}
+	
 	
 	@RequestMapping(value = "/getBbs", method = { RequestMethod.GET, RequestMethod.POST })
 	public BbsDto getBbs(int seq) {
@@ -100,7 +102,6 @@ public class BbsController {
 		}		 
 		return "NO";
 	}
-	
 	@RequestMapping(value = "/updateBbs", method = {RequestMethod.GET, RequestMethod.POST} )
 	public String updateBbs(BbsDto dto) {
 		System.out.println("BbsController updateBbs " + new Date());
@@ -113,6 +114,7 @@ public class BbsController {
 		return "n";
 	}
 	
+	
 	@RequestMapping(value = "/deleteBbs", method = {RequestMethod.GET, RequestMethod.POST} )
 	public String deleteBbs(int seq) {
 		System.out.println("BbsController deleteBbs " + new Date());
@@ -124,4 +126,32 @@ public class BbsController {
 		}
 		return "n";
 	}
+	
+	// 모바일
+	
+	@RequestMapping(value = "/writeBbs_M", method = { RequestMethod.GET, RequestMethod.POST })
+	public String writeBbs_M(@RequestBody BbsDto dto){
+		System.out.println("BbsController writeBbs_M() " + new Date());
+		
+		boolean b = service.writeBbs(dto);
+		
+		if(b) {
+			return "OK";
+		}
+		
+		return "NO";
+	}
+	
+	@RequestMapping(value = "/updateBbs_M", method = {RequestMethod.GET, RequestMethod.POST} )
+	public String updateBbs_M(@RequestBody BbsDto dto) {
+		System.out.println("BbsController updateBbs_M" + new Date());
+		
+		boolean b = service.updateBbs(dto);
+		
+		if(b) {
+			return "y";
+		}
+		return "n";
+	}
+	
 }

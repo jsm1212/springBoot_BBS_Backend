@@ -16,4 +16,8 @@ public interface MemberDao {
 	public int addMember(MemberDto dto);
 	
 	public MemberDto login(MemberDto dto);
+	
+	public int checkEmail(MemberDto dto);
+	
+	public List<MemberDto> allMember();
 }

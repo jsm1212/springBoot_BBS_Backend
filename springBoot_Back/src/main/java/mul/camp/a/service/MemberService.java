@@ -31,4 +31,14 @@ public class MemberService {
 	public MemberDto login(MemberDto dto) {
 		return dao.login(dto);
 	}
+	
+	public boolean checkEmail(MemberDto dto) {
+		int n = dao.checkEmail(dto);
+		
+		return n>0?true:false;
+	}
+	
+	public List<MemberDto> allMember() {
+		return dao.allMember();
+	}
 }
