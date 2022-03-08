@@ -66,6 +66,7 @@
   						AND ID=#{search}
   					</if>
   				</if>
+  				AND STEP=0
   	ORDER BY REF DESC, STEP ASC)
   	WHERE RNUM BETWEEN ${start} AND ${end}
   </select>
@@ -86,6 +87,7 @@
   						AND ID=#{search}
   					</if>
   				</if>
+  				AND STEP=0
   </select>
   
   <!-- 답글 -->
